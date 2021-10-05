@@ -10,8 +10,13 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
+          components: rustfmt
           toolchain: 1.53.0
           override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
       - uses: actions-rs/cargo@v1
         env:
           RUSTFLAGS: -D warnings
