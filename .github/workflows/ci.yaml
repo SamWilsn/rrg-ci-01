@@ -1,0 +1,20 @@
+on: [push]
+
+name: CI
+
+jobs:
+  tests:
+    name: Rust Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.53.0
+          override: true
+      - uses: actions-rs/cargo@v1
+        env:
+          RUSTFLAGS: -D warnings
+        with:
+          command: build
+          args: --locked --all --all-features
