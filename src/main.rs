@@ -8,5 +8,6 @@ impl Bar {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let bar = Bar(3).as_i32();
+    println!("Hello, world! {}", bar);
 }
